@@ -1,65 +1,105 @@
-import Image from "next/image";
+﻿'use client';
 
-export default function Home() {
+import React, { useState } from 'react';
+import { Car, Shield, Clock, Star, ChevronRight, Menu, X, Calendar, MapPin, Search } from 'lucide-react';
+
+export default function RentRideLanding() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const vehicles = [
+    {
+      id: 1,
+      name: 'Tesla Model 3',
+      type: 'Electric Sedan',
+      price: 89,
+      image: 'https://images.unsplash.com/photo-1560958089-b8a1929cea89?w=800&q=80',
+      rating: 4.9,
+      seats: 5,
+      transmission: 'Auto'
+    },
+    {
+      id: 2,
+      name: 'BMW X5',
+      type: 'Luxury SUV',
+      price: 129,
+      image: 'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&q=80',
+      rating: 4.8,
+      seats: 7,
+      transmission: 'Auto'
+    }
+  ];
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100">
+      <nav className="fixed top-0 w-full bg-white/80 backdrop-blur-lg z-50 border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16">
+            <div className="flex items-center space-x-2">
+              <div className="bg-gradient-to-br from-blue-600 to-purple-600 p-2 rounded-xl">
+                <Car className="w-6 h-6 text-white" />
+              </div>
+              <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                RentRide
+              </span>
+            </div>
+            <div className="hidden md:flex items-center space-x-8">
+              <a href="#vehicles" className="text-slate-700 hover:text-blue-600 transition font-medium">
+                Vehicles
+              </a>
+              <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-lg hover:shadow-lg transition transform hover:scale-105">
+                Get Started
+              </button>
+            </div>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </nav>
+
+      <div className="pt-32 pb-20 px-4">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center space-y-8">
+            <h1 className="text-5xl md:text-7xl font-bold text-slate-900 leading-tight">
+              Rent Your Dream
+              <span className="block bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                Vehicle Today
+              </span>
+            </h1>
+            <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+              Experience premium vehicle rentals with instant booking, flexible pricing, and 24/7 support.
+            </p>
+          </div>
         </div>
-      </main>
+      </div>
+
+      <div id="vehicles" className="py-20 px-4">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-slate-900 mb-4">Featured Vehicles</h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {vehicles.map((vehicle) => (
+              <div key={vehicle.id} className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition border border-slate-200">
+                <div className="relative overflow-hidden h-48">
+                  <img 
+                    src={vehicle.image} 
+                    alt={vehicle.name}
+                    className="w-full h-full object-cover group-hover:scale-110 transition duration-500"
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-lg font-bold text-slate-900">{vehicle.name}</h3>
+                  <p className="text-sm text-slate-500">{vehicle.type}</p>
+                  <div className="flex items-center justify-between mt-4">
+                    <span className="text-2xl font-bold text-slate-900">/day</span>
+                    <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-2 rounded-lg">
+                      Rent Now
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
