@@ -257,6 +257,12 @@ export default function RentRideLanding() {
                 CONTACT
               </a>
               <Link
+                href="/dashboard"
+                className="text-zinc-300 hover:text-amber-200 transition font-light tracking-wide"
+              >
+                DASHBOARD
+              </Link>
+              <Link
                 href="/login"
                 className="text-zinc-300 hover:text-amber-200 transition font-light tracking-wide"
               >
@@ -308,12 +314,24 @@ export default function RentRideLanding() {
               >
                 CONTACT
               </a>
-              <button className="block w-full text-left text-zinc-300 hover:text-amber-200 transition py-2 tracking-wide">
+              <Link
+                href="/dashboard"
+                className="block text-zinc-300 hover:text-amber-200 transition py-2 tracking-wide"
+              >
+                DASHBOARD
+              </Link>
+              <Link
+                href="/login"
+                className="block w-full text-left text-zinc-300 hover:text-amber-200 transition py-2 tracking-wide"
+              >
                 SIGN IN
-              </button>
-              <button className="w-full bg-amber-600 hover:bg-amber-700 text-zinc-900 px-6 py-3 rounded font-medium tracking-wide">
+              </Link>
+              <Link
+                href="/register"
+                className="w-full bg-amber-600 hover:bg-amber-700 text-zinc-900 px-6 py-3 rounded font-medium tracking-wide block text-center"
+              >
                 GET STARTED
-              </button>
+              </Link>
             </div>
           </div>
         )}

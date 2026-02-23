@@ -6,35 +6,35 @@ import {
   ArrowLeft,
   Star,
   Users,
-  Gauge,
   Fuel,
-  Settings,
-  Shield,
+  Gauge,
   Calendar,
   MapPin,
-  CheckCircle2,
+  Shield,
+  CheckCircle,
+  Heart,
+  Share2,
   Loader2,
   AlertCircle,
-  Clock,
-  Award,
 } from "lucide-react";
-import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
+import { useParams, useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
 
 export default function VehicleDetailsPage() {
   const params = useParams();
   const router = useRouter();
-  const vehicleId = params.id as string;
-
+  const { data: session } = useSession();
   const [vehicle, setVehicle] = useState<any>(null);
   const [loading, setLoading] = useState(true);
-  const [bookingLoading, setBookingLoading] = useState(false);
-  const [selectedImage, setSelectedImage] = useState(0);
-  const [bookingSuccess, setBookingSuccess] = useState(false);
-  const [error, setError] = useState("");
   const [bookingData, setBookingData] = useState({
     startDate: "",
     endDate: "",
+    pickupLocation: "",
+    dropoffLocation: "",
+    notes: "",
+  });
+  const [bookingLoading, setBookin
     pickupLocation: "",
     dropoffLocation: "",
     notes: "",
